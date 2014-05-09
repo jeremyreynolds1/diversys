@@ -53,7 +53,11 @@ function animate(animationName, animationDuration, delay, numImages){
 	//dynamically creating links for images.
 	while(count < numImages-1){
 		arrayLetters[count] = String.fromCharCode(lowercaseBegin);
-		//alert(arrayLetters[count]);
+		if(count > 25){
+				lowercaseBegin = 98;
+				arrayLetters[count] = String.fromCharCode(lowercaseBegin) + String.fromCharCode(uppercaseBegin);
+				uppercaseBegin++;
+			}
 		count++;
 		lowercaseBegin++;
 	}	
