@@ -91,9 +91,9 @@ function animate(animationName, animationDuration, delay, numImages){
 			setTimeout(function(){
 				$("#image"+currentImage).remove();
 				$("#images").append("<img id=image"+ nextImage + " src="+ imageArray[count].filepath + ".png />");
-				$("#image"+ nextImage ).css("animation-duration", imageArray[count].animationDuration).css("-webkit-animation-duration", imageArray[count].animationDuration);
-				$("#image"+ nextImage ).css("animation-delay", imageArray[count].animationDelay).css("-webkit-animation-delay", imageArray[count].animationDelay);
-				$("#image"+ nextImage ).addClass("float-right animated "+ imageArray[count].animationName);
+				$("#image"+ nextImage).css("animation-duration", imageArray[count].animationDuration).css("-webkit-animation-duration", imageArray[count].animationDuration);
+				$("#image"+ nextImage).css("animation-delay", imageArray[count].animationDelay).css("-webkit-animation-delay", imageArray[count].animationDelay);
+				$("#image"+ nextImage).addClass("float-right padded-top padded-bottom padded-left animated "+ imageArray[count].animationName);
 				currentImage++;
 				nextImage++
 				count++;
