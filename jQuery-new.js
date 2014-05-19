@@ -16,7 +16,9 @@
 		Custom animations per image
 	
 */
+//initalize imageArray for use later.
 var imageArray = new Array();
+
 function animate(animationName, animationDuration, delay, numImages){
 	//num images is always going to be 1 more than needed because image a is already in document.
 	//represents the name of the animation from animate.css
