@@ -18,8 +18,9 @@
 */
 //initalize imageArray for use later.
 var imageArray = new Array();
-
-function animate(animationName, animationDuration, delay, numImages){
+//create array for custom delay
+var customDelay = new Array();
+function animate(animationName, animationDuration, delay, numImages, custom){
 	//num images is always going to be 1 more than needed because image a is already in document.
 	//represents the name of the animation from animate.css
 	var animationName = animationName;
@@ -39,6 +40,9 @@ function animate(animationName, animationDuration, delay, numImages){
 	//when assigning new image must take into consideration adding letter of scene and .png
 	var filepath = src[0];
 	
+	//link custom to customDelay 
+	//NOTE CUSTOM MUST BE ARRAY
+	customDelay = custom;
 	//adding animations to first image
 	$("#image1").css("animation-duration", animationDuration).css("-webkit-animation-duration", animationDuration);
 	$("#image1").css("animation-delay", animationDelay).css("-webkit-animation-delay", animationDelay);
@@ -75,7 +79,6 @@ function animate(animationName, animationDuration, delay, numImages){
 		var image = {
 			animationName: animationName,
 			animationDuration: animationDuration,
-			animationDelay: animationDelay,
 			filepath: finalPath[i]
 		};
 		
@@ -94,7 +97,6 @@ function animate(animationName, animationDuration, delay, numImages){
 				$("#image"+currentImage).remove();
 				$("#images").append("<img id=image"+ nextImage + " src="+ imageArray[count].filepath + ".png />");
 				$("#image"+ nextImage).css("animation-duration", imageArray[count].animationDuration).css("-webkit-animation-duration", imageArray[count].animationDuration);
-				$("#image"+ nextImage).css("animation-delay", imageArray[count].animationDelay).css("-webkit-animation-delay", imageArray[count].animationDelay);
 				$("#image"+ nextImage).addClass("float-right padded-top padded-bottom padded-left animated "+ imageArray[count].animationName);
 				currentImage++;
 				nextImage++
@@ -103,6 +105,6 @@ function animate(animationName, animationDuration, delay, numImages){
 				if(count < imageArray.length){
 					change(imageArray);
 				}
-			}, delay);
+			}, animationDelay);
 		}
 }
