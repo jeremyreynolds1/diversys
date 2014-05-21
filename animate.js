@@ -18,7 +18,7 @@
 */
 //initalize imageArray for use later.
 var imageArray = new Array();
-//create array for custom animation 
+//create array for custom delay
 
 function animate(animationName, animationDuration, delay, numImages){
 	//num images is always going to be 1 more than needed because image a is already in document.
