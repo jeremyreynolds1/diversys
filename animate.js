@@ -18,6 +18,7 @@
 */
 //initalize imageArray for use later.
 var imageArray = new Array();
+//create array for custom animation 
 
 function animate(animationName, animationDuration, delay, numImages){
 	//num images is always going to be 1 more than needed because image a is already in document.
@@ -75,7 +76,7 @@ function animate(animationName, animationDuration, delay, numImages){
 		var image = {
 			animationName: animationName,
 			animationDuration: animationDuration,
-			animationDelay: animationDelay,
+			//animationDelay: animationDelay,
 			filepath: finalPath[i]
 		};
 		
@@ -94,7 +95,7 @@ function animate(animationName, animationDuration, delay, numImages){
 				$("#image"+currentImage).remove();
 				$("#images").append("<img id=image"+ nextImage + " src="+ imageArray[count].filepath + ".png />");
 				$("#image"+ nextImage).css("animation-duration", imageArray[count].animationDuration).css("-webkit-animation-duration", imageArray[count].animationDuration);
-				$("#image"+ nextImage).css("animation-delay", imageArray[count].animationDelay).css("-webkit-animation-delay", imageArray[count].animationDelay);
+				//$("#image"+ nextImage).css("animation-delay", imageArray[count].animationDelay).css("-webkit-animation-delay", imageArray[count].animationDelay);
 				$("#image"+ nextImage).addClass("float-right padded-top padded-bottom padded-left animated "+ imageArray[count].animationName);
 				currentImage++;
 				nextImage++
