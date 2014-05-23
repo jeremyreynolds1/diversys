@@ -18,9 +18,8 @@
 */
 //initalize imageArray for use later.
 var imageArray = new Array();
-//create array for custom delay
-var customDelay = new Array();
-function animate(animationName, animationDuration, delay, numImages, custom){
+
+function animate(animationName, animationDuration, delay, numImages, delayArray){
 	//num images is always going to be 1 more than needed because image a is already in document.
 	//represents the name of the animation from animate.css
 	var animationName = animationName;
@@ -40,10 +39,14 @@ function animate(animationName, animationDuration, delay, numImages, custom){
 	//when assigning new image must take into consideration adding letter of scene and .png
 	var filepath = src[0];
 	
-	//link customDelay defined in html by array to customDelay 
-	//NOTE CUSTOM MUST BE ARRAY
-	customDelay = custom;
-	//alert(customDelay[1]);
+	//link copyDelay defined in html by array to copyDelay 
+	var copyDelay = new Array(delayArray.length);
+	for (var j = 0; j < delayArray.length; j++) {
+		copyDelay[j] = delayArray[j];
+		}
+			
+	//alert(copyDelay[0]);
+	
 	//adding animations to first image
 	$("#image1").css("animation-duration", animationDuration).css("-webkit-animation-duration", animationDuration);
 	$("#image1").css("animation-delay", animationDelay).css("-webkit-animation-delay", animationDelay);
@@ -87,7 +90,8 @@ function animate(animationName, animationDuration, delay, numImages, custom){
 		imageArray[i] = image;
 	}
 	
-	 var countDelay = 0;
+	var countDelay = 0;
+	//alert(copyDelay[countDelay]);
 	count = 0;
 	var currentImage = 1;
 	var nextImage = 2;
@@ -109,6 +113,6 @@ function animate(animationName, animationDuration, delay, numImages, custom){
 					change(imageArray);
 				}
 				//was animationDelay
-			}, customDelay[countDelay]);
+			}, copyDelay[countDelay]);
 		}
 }
