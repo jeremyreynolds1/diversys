@@ -10,7 +10,7 @@ while [ $count -le $input ]
 do
 	echo "What is image $count's delay? "
 	read input1
-	echo $input1 >> $fileName
+	echo "$input1,"  >> $fileName 
 	count=$(($count + 1))
 	#echo $count
 done
