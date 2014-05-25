@@ -21,7 +21,7 @@
 			//fileReader can read data from file
 			var delayArray = new Array();
 			var count = 0;
-				$.get( "../animate.txt", function( data ) {
+				$.get( "../animation.txt", function( data ) {
 					var newData = data.split(",");
 					//var newData = newData1.split(",");
 					newData.forEach(function(entry) {
@@ -31,7 +31,6 @@
 							count++;
 					});
 					delayArray.pop();
-					//delayArray.forEach(alert(delayArray));
 					animate("fadeIn", "5s", 6000, "9", delayArray);
 				});
 			//var delayArray = ["5000", "10000", "6000", "7000", "10000", "9000", "8000", "3000", "2000"];
