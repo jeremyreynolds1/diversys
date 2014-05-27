@@ -13,11 +13,11 @@ read input1
 touch animationNames.txt
 
 count=1
-while [ $count -le $input ]
+while [ $count -le $input1 ]
 do
 	echo "What is image $count's delay? "
-	read input1
-	echo "$input1,"  >> animationNames.txt 
+	read input2
+	echo "$input2,"  >> animationNames.txt 
 		
 	count=$(($count + 1))
 	#echo $count
