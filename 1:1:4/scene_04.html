@@ -20,18 +20,35 @@
 			
 			//fileReader can read data from file
 			var delayArray = new Array();
-			var count = 0;
+			var animationNames = new Array();
+			var delayCount = 0;
+			var nameCount = 0;
 				$.get( "../animation.txt", function( data ) {
 					var newData = data.split(",");
 					//var newData = newData1.split(",");
 					newData.forEach(function(entry) {
 						    entryStripped = entry.replace(/(\r\n|\n|\r)/gm,"");
-							delayArray[count] = entryStripped;
+							delayArray[delayCount] = entryStripped;
 							//alert(delayArray[count]);
-							count++;
+							delayCount++;
 					});
 					delayArray.pop();
-					animate("fadeIn", "5s", 6000, "9", delayArray);
+					//delay array ready to be pushed to script.
+					//need to get information from animationNames.txt
+					$.get("../animationNames.txt", function ( data ){
+						var newData2 = data.split(",");
+						newData2.forEach(function(entry){
+							nameEntryStripped = entry.replace(/(\r\n|\n|\r)/gm,"");
+							animationNames[nameCount] = nameEntryStripped;
+							//alert(animationNames[nameCount]);
+							nameCount++;
+						});
+						//push to script here?
+						animationNames.pop();
+						animate("5s", 9, delayArray, animationNames);
+						
+					});
+					//animate("fadeIn", "5s", 6000, "9", delayArray);
 				});
 			//var delayArray = ["5000", "10000", "6000", "7000", "10000", "9000", "8000", "3000", "2000"];
 			//when passing delayArray it's undefined in animate.js
