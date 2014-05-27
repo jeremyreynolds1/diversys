@@ -5,21 +5,11 @@
 	
 	Created on May 7, 2014 by Jeremy Reynolds
 	
-	Updated on May 8, 2014:
-		corrected code on line 47 it was
-			while(count < numImages)
-		Now reads
-			while(count < numImages-1)	
-			
-	Future additions include:
-		Custom timing durations and default timing durations
-		Custom animations per image
-	
 */
 //initalize imageArray for use later.
 var imageArray = new Array();
 
-function animate(animationName, animationDuration, delay, numImages, delayArray){
+function animate(animationDuration, numImages, delayArray, customNames){
 	//num images is always going to be 1 more than needed because image a is already in document.
 	//represents the name of the animation from animate.css
 	var animationName = animationName;
@@ -28,7 +18,7 @@ function animate(animationName, animationDuration, delay, numImages, delayArray)
 	//number of total images in the scene
 	var stringNumImages = numImages;
 	//represents delay of animations
-	var animationDelay = delay;
+	//var animationDelay = delay;
 	//getting number value of string
 	var numImages = Number(stringNumImages);
 	//src of first image
@@ -44,13 +34,18 @@ function animate(animationName, animationDuration, delay, numImages, delayArray)
 	for (var j = 0; j < delayArray.length; j++) {
 		copyDelay[j] = delayArray[j];
 		}
+	
+	//need to link customNames to copyNames
+	var copyNames = new Array(customNames.length);
+	for(var i = 0; i < customNames.length; i++){
+		copyNames[i] = customNames[j];
+	}
 			
 	//alert(copyDelay[0]);
 	
 	//adding animations to first image
 	$("#image1").css("animation-duration", animationDuration).css("-webkit-animation-duration", animationDuration);
-	$("#image1").css("animation-delay", animationDelay).css("-webkit-animation-delay", animationDelay);
-	$("#image1").addClass("animated "+ animationName);
+	$("#image1").addClass("animated "+ copyNames[0]);
 	
 	var arrayLetters = new Array();
 	//final path for images.
@@ -63,11 +58,11 @@ function animate(animationName, animationDuration, delay, numImages, delayArray)
 	//dynamically creating links for images.
 	while(count < numImages-1){
 		arrayLetters[count] = String.fromCharCode(lowercaseBegin);
-		if(count > 25){
+		/*if(count > 25){
 				lowercaseBegin = 98;
 				arrayLetters[count] = String.fromCharCode(lowercaseBegin) + String.fromCharCode(uppercaseBegin);
 				uppercaseBegin++;
-			}
+			}*/
 		count++;
 		lowercaseBegin++;
 	}	
@@ -81,7 +76,7 @@ function animate(animationName, animationDuration, delay, numImages, delayArray)
 	for(var i=0; i<finalPath.length; i++){
 		//create each "image" as an object containing essential variables relating to the image.
 		var image = {
-			animationName: animationName,
+			animationName: copyNames[i],
 			animationDuration: animationDuration,
 			filepath: finalPath[i]
 		};
